@@ -14,14 +14,15 @@ module.exports = (req,res,next) => {
   console.log('headers', req.headers)
 
   let token = req.headers.authorization.split('Bearer ')[1];
+  
   if(!token){
     throw new Error('Invalid authorization provided');
   }
 
-  let secret = 'changethis';
-  console.log('token', token);
+  let secret = process.env.SECRET;
   let decodedToken = jwt.verify(token,secret);
-  console.log('adfsdfsdf')
+  console.log('adfsdfsdf', decodedToken);
+
   req.userId = decodedToken.id;
   User.findOne({_id: req.userId})
     .then( user => {
