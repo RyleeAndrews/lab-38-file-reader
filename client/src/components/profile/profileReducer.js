@@ -12,6 +12,11 @@ export default (state=defaultState,action) => {
             return payload.user;
         }
 
+        case "UPDATE_USER": {
+          console.log(state,payload);
+          return Object.assign(state,payload);
+        }
+
         default:
             return state;
 

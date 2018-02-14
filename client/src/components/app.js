@@ -6,6 +6,7 @@ import {Route} from 'react-router-dom';
 import Home from './home.js';
 import Profile from './profile/profileDashboard.js';
 
+
 import Category from './category/catDashboard.js';
 
 class App extends React.Component {

@@ -21,6 +21,7 @@ app.use(
 app.use(require("../routes/sushiRoutes.js"));
 app.use(require("../routes/authroutes.js"));
 
+
 // 404 Handler
 app.use("*", (req,res,next) => {
   res.sendStatus(404);

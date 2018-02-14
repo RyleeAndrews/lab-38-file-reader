@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bluebird').promisifyAll(require('bcrypt'));
+const aws = require('../lib/middleware/s3.js');
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
@@ -11,12 +12,28 @@ const userSchema = new mongoose.Schema({
   lastname: {type: String, required: false},
   about: {type: String, required: false},
   avatar: {type: String, required: false},
+  avatarFile: {type: String},
 });
+
+userSchema.methods.attachFiles = function(files){
+
+  let file = files[0];
+  let key = `${file.filename}-${file.originalname}`;
+  let record = this;
+
+  aws.upload(file.path, key)
+    .then( url => {
+      record.avatar = url;
+      return record.save();
+    })
+    .catch(console.error);
+}
 
 userSchema.methods.generateHash = function(password) {
   return bcrypt.hashAsync(password, 10)
     .then((hash) => {
       this.password = hash;
+      console.log(this);
       return this;
     });
 };
@@ -65,7 +82,7 @@ userSchema.methods.comparePassword = function(password) {
 
 userSchema.methods.generateToken = function() {
 
-  let secret = 'changethis';
+  let secret = process.env.SECRET;
   console.log('generating token', this)
   return jwt.sign({id: this._id}, secret);
 };

@@ -7,7 +7,7 @@ const bodyParser = require('body-parser').json();
 const Sushi = require('../models/sushi.js');
 
 
-const sushiRouter = module.exports = express.Router();
+const sushiRouter = module.exports = require('express').Router();
 
 sushiRouter.get('/api/:model', (req,res,next) => {
   try {

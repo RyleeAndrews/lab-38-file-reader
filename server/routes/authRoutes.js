@@ -4,6 +4,7 @@ const User = require(__dirname + '/../models/user.js');
 const basicHTTP = require(__dirname + '/../lib/middleware/basicHttp.js');
 const bearerAuth = require(__dirname + '/../lib/middleware/bearAuth.js');
 const jsonParser = require('body-parser').json();
+const bodyParser = require('../lib/middleware/bodyParser.js');
 const jwt = require('jsonwebtoken');
 const authRouter = module.exports = require('express').Router();
 
@@ -19,12 +20,12 @@ authRouter.post('/auth/create', jsonParser, (req, res, next) => {
     .then((user) => {
       user.save()
         .then( user => {
-          console.log('user', user);
+          console.log('user', newUser);
           let token = user.generateToken();
-          res.cookie('auth', token, { maxAge: 900000 });
+          res.cookie('auth', token);
           res.send({user,token});
         })
-        .catch(next);
+        .catch(error => next(error.message));
     })
     .catch(next);
 
@@ -66,4 +67,27 @@ authRouter.get('/auth/validate', bearerAuth, (req, res, next) => {
       res.send({user,token});
     })
     .catch(next);
+});
+
+authRouter.put('/auth/:id', bodyParser, bearerAuth, (req,res,next) => {
+  let id = req.params.id;
+
+  console.log(req.files);
+
+  User.findOne({_id:id})
+    .then( result => {
+      Object.assign(result, req.body);
+      return result.save();
+    })
+    .then( record => {
+      console.log('record', record);
+      if(req.files && req.files.length){
+        return record.attachFiles(req.files);
+      }
+    })
+    .then(result => {
+      console.log(result)
+      res.send(result);
+    })
+    .catch(err => next(err.message));
 });

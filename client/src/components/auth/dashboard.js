@@ -32,7 +32,7 @@ class AuthDashboard extends React.Component {
   }
 
   render(){
-    console.log(this.props.auth.token);
+
     if(this.state.init){
       return null;
     }

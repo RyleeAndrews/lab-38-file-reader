@@ -1,5 +1,5 @@
 import React from 'react';
-import EditForm from './edit.js';
+import EditForm from './catEdit.js';
 
 class CatItem extends React.Component {
   constructor(props){
