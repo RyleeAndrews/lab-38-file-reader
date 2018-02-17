@@ -17,6 +17,10 @@ export default (state=defaultState,action) => {
           return Object.assign(state,payload);
         }
 
+        case "DELETE_USER": {
+          return Object.assign({...state,payload});
+        }
+
         default:
             return state;
 

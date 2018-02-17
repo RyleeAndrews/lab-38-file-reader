@@ -1,34 +1,6 @@
-401 JS --  Lab 38 photo uploads
-===
+For this application you first need to have an env file for both your front end and backend. For the front end env file you need to have urls for the auth routes and the api routes. Pick any port thats a thousand or up. In the env file have them set up as such AUTH_URL=http:// any number thousand or up, and API_URL=http:// any number thousand or up. For the backend env file have a PORT= any number a 1000 thousand or up. A SECRET that can be any string, API_URL=http:// same as the front end's url,
+AUTH_URL=http:// same as the front end url. CORS_ORIGINS=http://localhost:8080, AWS_BUCKET= the name of the bucket created in amazon console, AWS_ACCESS_KEY_ID= the credential key you need to request in amazon console, AWS_SECRET_ACCESS_KEY= the credential key you need to request in amazon console,
+MONGODB_URI= url for your mongo database.
 
-## Submission Instructions
-  * Work in a fork of this repository
-  * Work in a branch on your fork
-  * Write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-duncan`
-  * Submit a pull request to this repository
-  * Submit a link to your pull request on canvas
-  * Submit a question, observation, and how long you spent on canvas  
-
-
-## Requirements  
-#### backend setup
-* use [sluggram](http://github.com/slugbyte/sluggram) 
-* or use your mid 401 project
-
- 
-#### Feature Tasks 
-* Create a SettingsContainer
-  * give the user the ablity to create or update thier profile
-  
-* Create a DashboardContainer
-  * give the user the abilty to create, read, update and destroy photos
-
-#### Test
-* Test your redux reducers 
-* Test your util methods
-
-## Bonus 2pts
-* Create full crud for two resources 
-
-####  Documentation  
-Write a description of the project in your README.md
+Upon cloning run npm init. Then cd to the client side and run npm install and cd to the server side and also run npm install.
+Then in a terminal window start your mongo database. Then in another terminal window start the front end server and in another window start your backend server. Open up localhost:8080 in a browser. You need to first sign up and upon signing in you will be taken to home. If you do localhost:8080/category you will get to the page where you create and delete tasks and update. If you route to localhost:8080/profile it will take you to the profile page where you can create a profile picture. Preview a picture and update a picture. 

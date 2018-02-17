@@ -70,7 +70,7 @@ class Profile extends React.Component {
 
   render(){
     let hasPreview = this.state.preview || undefined;
-    console.log(this.props.profile);
+    console.log(this.state._id);
     return(
       <div>
         <div className="headerWords"> The one stop profile shop for &nbsp;</div>
@@ -133,6 +133,7 @@ class Profile extends React.Component {
           save profile
           </button>
         </form>
+        <button type="submit" onClick={() => this.props.deleteUser(this.state._id)}> delete </button>
       </div>
     );
   }
@@ -144,6 +145,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = ( dispatch, getState ) => ({
   updateUser: user => dispatch(actions.updateUser(user)),
+  deleteUser: user => dispatch(actions.deleteUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "watch": "webpack-dev-server --inline --hot",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.9",
+    "dotenv": "^5.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.17.0",
@@ -27,6 +30,7 @@
     "node-sass": "^4.7.2",
     "react": "^16.2.0",
     "react-browser-router": "^2.0.5",
+    "react-cookies": "^0.1.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -35,6 +39,8 @@
     "redux": "^3.7.2",
     "resolve-url-loader": "^2.2.1",
     "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "superagent": "^3.8.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   }

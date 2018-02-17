@@ -91,3 +91,17 @@ authRouter.put('/auth/:id', bodyParser, bearerAuth, (req,res,next) => {
     })
     .catch(err => next(err.message));
 });
+
+authRouter.delete('/auth/:id', bearerAuth, (req,res,next) => {
+  try{
+
+    let id = req.params.id;
+
+    User.remove({_id:id})
+      .then( () => res.send('model deleted'))
+      .catch(err => res.send('model id not found'));
+  }
+  catch(error){
+    next(error.message);
+  }
+});

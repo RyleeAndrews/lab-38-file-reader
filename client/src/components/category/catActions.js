@@ -1,6 +1,8 @@
 import superagent from 'superagent';
 import cookie from 'react-cookies';
 
+
+let __API_URL__ = process.env.API_URL;
 let API = `${__API_URL__}/api/:model`;
 
 export const categoryInitialize = () => dispatch => {
