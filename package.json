@@ -1,0 +1,19 @@
+{
+  "name": "lab-38-file-reader",
+  "version": "1.0.0",
+  "description": "For this application you first need to have an env file for both your front end and backend. For the front end env file you need to have urls for the auth routes and the api routes. Pick any port thats a thousand or up. In the env file have them set up as such AUTH_URL=http:// any number thousand or up, and API_URL=http:// any number thousand or up. For the backend env file have a PORT= any number a 1000 thousand or up. A SECRET that can be any string, API_URL=http:// same as the front end's url, AUTH_URL=http:// same as the front end url. CORS_ORIGINS=http://localhost:8080, AWS_BUCKET= the name of the bucket created in amazon console, AWS_ACCESS_KEY_ID= the credential key you need to request in amazon console, AWS_SECRET_ACCESS_KEY= the credential key you need to request in amazon console, MONGODB_URI= url for your mongo database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyleeAndrews/lab-38-file-reader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyleeAndrews/lab-38-file-reader/issues"
+  },
+  "homepage": "https://github.com/RyleeAndrews/lab-38-file-reader#readme"
+}
